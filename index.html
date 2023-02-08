@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SK GROUP</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <section class="mt-4">
+      <div class="container">
+        <form class="card">
+          <div class="card-header">
+            <nav class="nav nav-pills justify-content-center">
+              <a class="nav-link tab-pills" href="#">Основні дані</a>
+              <a class="nav-link tab-pills" href="#">Створення паролю</a>
+            </nav>
+          </div>
+          <div class="card-body">
+            <div class="tab d-none">
+              <div class="personal-info bg-light p-4 mb-4 rounded">
+                <h5 class="personal-info-title mb-3 mt-2">Особисті дані</h5>
+                <div class="col-sm-3">
+                  <input
+                    type="file"
+                    name="upload_file"
+                    class="form-control form-control-sm"
+                    id="upload_file"
+                    onchange="getImagePreview(event)"
+                  />
+                </div>
+                <div class="opacity-50 mt-2 mb-2">
+                  <span
+                    ><small>
+                      Формат JPG, GIF або PNG<br />
+                      Розмір не більше 800 KB</small
+                    >
+                  </span>
+                </div>
+                <div class="mt-2 mb-2" id="preview"></div>
+                <div class="row">
+                  <div class="col">
+                    <label for="last-name" class="form-label">Прізвище</label>
+                    <input
+                      type="text"
+                      class="form-control mb-2"
+                      name="last-name"
+                      id="last-name"
+                      placeholder="Вкажіть ваше прізвище"
+                      aria-label="Last name"
+                    />
+                  </div>
+                  <div class="col">
+                    <label for="first-name" class="form-label">Імʼя</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="first-name"
+                      id="first-name"
+                      placeholder="Вкажіть ваше імʼя"
+                      aria-label="First name"
+                    />
+                  </div>
+                  <div class="col">
+                    <label for="first-name" class="form-label"
+                      >По батькові</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="second-name"
+                      id="second-name"
+                      placeholder="Вкажіть ваше імʼя по батькові"
+                      aria-label="Second name"
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <label for="birth-date" class="form-label"
+                      >Дата народження</label
+                    >
+                    <input
+                      type="date"
+                      class="form-control"
+                      name="birth-date"
+                      id="birth-date"
+                      placeholder="ДД.ММ.РРРР"
+                      aria-label="Birth date"
+                    />
+                  </div>
+                  <div class="col">
+                    <label for="email" class="form-label"
+                      >Адреса електронної пошти</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      name="email"
+                      id="email"
+                      placeholder="example@gmail.com"
+                    />
+                  </div>
+                  <div class="col">
+                    <label for="tel" class="form-label">Номер телефону</label>
+                    <input
+                      type="tel"
+                      class="form-control"
+                      name="tel"
+                      id="tel"
+                      placeholder="+380970001133"
+                      aria-label="Tel"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="work-info bg-light p-4 mb-4 rounded">
+                <h5 class="mb-3">Робочі дані</h5>
+                <div class="row">
+                  <div class="col">
+                    <label class="mb-2">Посада/роль</label>
+                    <select
+                      class="form-select"
+                      aria-label="Default select example"
+                      id="liveAlert"
+                    >
+                      <option selected>Виберіть посаду</option>
+                      <option value="1" id="liveAlert">Водій</option>
+                    </select>
+                  </div>
+                  <div class="col">
+                    <label class="mb-2">Підрозділ</label>
+                    <select
+                      class="form-select"
+                      aria-label="Default select example"
+                    >
+                      <option selected>Виберіть підрозділ</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                    </select>
+                  </div>
+                  <div class="col">
+                    <label class="mb-2">Бригада</label>
+                    <select
+                      class="form-select"
+                      aria-label="Default select example"
+                    >
+                      <option selected>Виберіть бригаду</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                    </select>
+                  </div>
+                  <div id="liveAlertPlaceholder"></div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <label class="mt-2 mb-2">Код користувача</label>
+                    <div class="input-group w-50">
+                      <input
+                        type="text"
+                        class="form-control"
+                        rel="gp"
+                        data-size="20"
+                        data-character-set="A-Z,0-9"
+                      />
+                      <button
+                        type="button"
+                        class="btn btn-default getNewPass border"
+                      >
+                        Згенерувати новий код
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <label for="driving-license" class="form-label mt-2"
+                      >Номер посвідчення водія</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="driving-license"
+                      id="driving-license"
+                      placeholder="AA000000"
+                      aria-label="Driving license"
+                    />
+                  </div>
+                  <div class="col">
+                    <label for="medical-book" class="form-label mt-2"
+                      >Номер особової медичної книжки</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="medical-book"
+                      id="medical-book"
+                      placeholder="00000000"
+                      aria-label="Medical book"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab d-none">
+              <div class="bg-light p-4 mb-4 rounded">
+                <h5 class="mt-2">Пароль</h5>
+                <div class="row">
+                  <div class="col">
+                    <label class="form-label">Логін</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="login"
+                      id="login"
+                      placeholder="Придумайте логін для користувача"
+                      aria-label="login"
+                    />
+                  </div>
+                  <div class="col">
+                    <label class="mb-2">Тимчасовий пароль</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="parole"
+                        placeholder="Придумайте тимчасовий пароль"
+                        rel="gp"
+                        data-size="10"
+                        data-character-set="a-z,A-Z,0-9,#"
+                      />
+                      <button
+                        type="button"
+                        class="btn btn-default border getNewPass"
+                      >
+                        Згенерувати пароль
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-light p-4 mb-4 rounded">
+                <h5>Пароль (планшет)</h5>
+                <div class="row">
+                  <div class="col">
+                    <label class="form-label">Логін (планшет)</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="login"
+                      id="login2"
+                      placeholder="Придумайте логін для користувача"
+                      aria-label="login"
+                    />
+                  </div>
+                  <div class="col">
+                    <label class="mb-2">Пін код</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="parole2"
+                        placeholder="Придумайте тимчасовий пін код"
+                        rel="gp"
+                        data-size="10"
+                        data-character-set="a-z,A-Z,0-9,#"
+                      />
+                      <button
+                        type="button"
+                        class="btn btn-default border getNewPass"
+                      >
+                        Згенерувати пароль
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer text-end">
+              <div class="d-flex">
+                <button
+                  type="button"
+                  id="back_button"
+                  class="btn btn-link"
+                  onclick="back()"
+                >
+                  Попередній крок
+                </button>
+                <button
+                  type="button"
+                  id="next_button"
+                  class="btn btn-primary ms-auto"
+                  onclick="next()"
+                >
+                  Наступний крок
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    Реєстрація завершена
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body" id="modal-body"></div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Закрити
+                  </button>
+                  <button type="button" class="btn btn-primary" id="copy">
+                    Скопіювати
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
